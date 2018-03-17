@@ -1,19 +1,25 @@
 var button = document.getElementById("button");
 //console.log("button", button);
 
-button.addEventListener("click", function(){
+
+
+
+button.addEventListener("click", function(event){
+  //event.preventDefault();
   var input = document.getElementById("search");
   var searchTerm = input.value;
+  var results = document.getElementById("results");
+  results.innerHTML = "";
   console.log('searchTerm is: ', searchTerm)
   var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-  url += '?' + 'api-key='+ "b9b0fdd8564742c796d6fa46a983471c" + "&fq=" + searchTerm;
-  $.get(url, function(data){
+  url += '?' + 'api-key='+ "b9b0fdd8564742c796d6fa46a983471c";
+  $.get(url + "&fq=" + searchTerm , function(data){
     // console.log("data: ", data.response.docs);
     var newsArray = data.response.docs;
 
     var divs = [];
     for(var i = 0; i < newsArray.length; i++){
-      console.log(newsArray[i].multimedia);
+    //  console.log(newsArray[i].multimedia);
       // list+= "<a target='_blank' href="+ link +" >" + "<li>" + newsArray[i].headline.main + "</li>" + "</a>"
       var link = newsArray[i].web_url;
       var imgMain = "https://www.nytimes.com/";
@@ -46,8 +52,8 @@ button.addEventListener("click", function(){
 
     }
 
-    console.log("divs array: ", divs)
-    var results = document.getElementById("results");
+  //  console.log("divs array: ", divs)
+
     // results.appendChildren();
      divs.forEach(div => results.appendChild(div));
   })
