@@ -35,6 +35,7 @@ button.addEventListener("click", function(event){
       var p = document.createElement("p");
 
       a.href = link;
+      a.target = "_blank"
       image.classList.add("card-img-top");
       image.src = (imgURL)?  imgMain + imgURL : noImgFound;
       h5.classList.add("card-title");
@@ -55,7 +56,7 @@ button.addEventListener("click", function(event){
 
   //  console.log("divs array: ", divs)
      var h4 = document.getElementById("searchItem");
-     h4.innerHTML = "Here are the search results for " + "<b>" + searchTerm + "<b>" + ":";
+     h4.innerHTML = "Here are the search results for " + "<b>" + searchTerm + "</b>" + ":";
     // results.appendChildren();
      divs.forEach(div => results.appendChild(div));
   })
