@@ -8,6 +8,7 @@ button.addEventListener("click", function(event){
   //event.preventDefault();
   var input = document.getElementById("search");
   var searchTerm = input.value;
+  input.value = "";
   var results = document.getElementById("results");
   results.innerHTML = "";
   console.log('searchTerm is: ', searchTerm)
