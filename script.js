@@ -14,7 +14,7 @@ button.addEventListener("click", function(event){
   console.log('searchTerm is: ', searchTerm)
   var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
   url += '?' + 'api-key='+ "b9b0fdd8564742c796d6fa46a983471c";
-  $.get(url + "&fq=" + searchTerm , function(data){
+  $.get(url + "&fq=" + searchTerm  + "&sort=newest", function(data){
     // console.log("data: ", data.response.docs);
     var newsArray = data.response.docs;
 
@@ -54,7 +54,8 @@ button.addEventListener("click", function(event){
     }
 
   //  console.log("divs array: ", divs)
-
+     var h4 = document.getElementById("searchItem");
+     h4.innerHTML = "Here are the search results for " + "<b>" + searchTerm + "<b>" + ":";
     // results.appendChildren();
      divs.forEach(div => results.appendChild(div));
   })
